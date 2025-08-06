@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Med.Ai - Medtools Creative Team AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Med.Ai</h1>
+            <nav class="nav">
+                <a href="/" class="nav-link active" data-page="home">Home</a>
+                <a href="/chat" class="nav-link" data-page="chat">Chat</a>
+                <a href="/about" class="nav-link" data-page="about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Medtools Creative Team<br>Artificial Intelligence Assistant</h2>
+                        <p class="hero-subtitle">Get instant support for SOPs, growth analysis, daily procedures, and creator team guidelines powered by advanced AI technology.</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="navigateToChat()">Start Chat</button>
+                            <button class="btn btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="features" id="features">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <div class="icon-circle">📋</div>
+                            </div>
+                            <h3>SOP Guidance</h3>
+                            <p>Get instant access to standard operating procedures and guidelines</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <div class="icon-circle">📊</div>
+                            </div>
+                            <h3>Growth Analysis</h3>
+                            <p>Advanced analytics for account growth and performance insights</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <div class="icon-circle">👥</div>
+                            </div>
+                            <h3>Team Support</h3>
+                            <p>Comprehensive support for creator team workflows and procedures</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Chat Page -->
+        <section id="chat" class="page">
+            <div class="container">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>Med.Ai Chat Assistant</h2>
+                        <p>Ask questions about SOPs, guidelines, and digitalization strategies</p>
+                    </div>
+                    
+                    <div class="chat-window" id="chatWindow">
+                        <div class="welcome-message">
+                            <div class="bot-message">
+                                <div class="message-content">
+                                    <p>👋 Hello! I'm Med.Ai, your Medtools Creative Team AI Assistant.</p>
+                                    <p>I'm here to help you with:</p>
+                                    <ul>
+                                        <li>Standard Operating Procedures (SOPs)</li>
+                                        <li>Creator team guidelines</li>
+                                        <li>Growth analysis strategies</li>
+                                        <li>Digitalization best practices</li>
+                                    </ul>
+                                    <p>How can I assist you today?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="chatInput" 
+                                placeholder="Type your question about SOPs, guidelines, or team procedures..."
+                                maxlength="500"
+                            >
+                            <button id="sendButton" class="send-btn" onclick="sendMessage()">
+                                <span class="send-text">Send</span>
+                                <span class="loading-spinner" style="display: none;">⏳</span>
+                            </button>
+                        </div>
+                        <div class="input-info">
+                            <small>Press Enter to send • Powered by Medtools Creative Team</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <div class="disclaimer-card">
+                        <div class="disclaimer-icon">⚠️</div>
+                        <h3>Important Medical Disclaimer</h3>
+                        <p>Med.Ai is designed to provide general health information and should not replace professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare providers for serious medical concerns or emergencies. In case of medical emergencies, contact your local emergency services immediately.</p>
+                    </div>
+
+                    <div class="cta-section">
+                        <h2>Ready to Get Started?</h2>
+                        <p>Experience the future of medical assistance today</p>
+                        <button class="btn btn-primary" onclick="navigateToChat()">Start Chatting Now</button>
+                    </div>
+
+                    <div class="how-it-works">
+                        <h2>How Med.Ai Works</h2>
+                        <div class="steps-grid">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h4>Ask Your Question</h4>
+                                <p>Simply type your health-related question in natural language</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h4>AI Analysis</h4>
+                                <p>Our AI processes your query using advanced medical knowledge</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h4>Get Insights</h4>
+                                <p>Receive personalized, evidence-based medical information</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-features">
+                        <h2>Key Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon-small">🧠</div>
+                                <h4>AI-Powered Intelligence</h4>
+                                <p>Advanced machine learning algorithms trained on vast medical knowledge bases</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon-small">⚡</div>
+                                <h4>Instant Responses</h4>
+                                <p>Get immediate answers to your health questions without waiting</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon-small">🔒</div>
+                                <h4>Privacy First</h4>
+                                <p>Your health information remains completely private and secure</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon-small">📱</div>
+                                <h4>Multi-Platform</h4>
+                                <p>Access Med.Ai from any device, anywhere, anytime</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon-small">🎯</div>
+                                <h4>Personalized Care</h4>
+                                <p>Tailored responses based on your specific health concerns</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon-small">📚</div>
+                                <h4>Evidence-Based</h4>
+                                <p>All recommendations backed by current medical research and guidelines</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="what-is-medai">
+                        <h2>What is <span class="brand-highlight">Med.Ai</span>?</h2>
+                        <p>Your intelligent medical companion designed to provide instant health insights and support through advanced AI technology.</p>
+                        
+                        <div class="mission-section">
+                            <div class="mission-content">
+                                <h3>Our Mission</h3>
+                                <p>Med.Ai is revolutionizing healthcare accessibility by providing instant, reliable medical information and guidance through cutting-edge artificial intelligence.</p>
+                                <p>We believe everyone deserves access to quality medical insights, regardless of location or time constraints.</p>
+                            </div>
+                            <div class="mission-highlight">
+                                <div class="highlight-icon">🕐</div>
+                                <h4>24/7 Availability</h4>
+                                <p>Always here when you need medical guidance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Med.Ai. Your trusted medical AI companion.</p>
+            <p class="disclaimer">This AI assistant is for informational purposes only and should not replace professional medical advice.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
