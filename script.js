@@ -3,12 +3,11 @@ let currentPage = 'home';
 let chatMessages = [];
 let isLoading = false;
 
-// API Configuration (can be updated with real API key)
-const API_CONFIG = {
-    apiKey: '', // Add your OpenRouter API key here
-    endpoint: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'anthropic/claude-3.5-sonnet',
-    systemPrompt: `You are Med.Ai, an AI assistant specifically designed for the Medtools Creative Team. You help with SOPs, guidelines, growth analysis, and team procedures. Provide helpful, accurate information about content creation workflows, team collaboration, and digital marketing strategies for the medical education sector.`
+// Chatbase AI Configuration
+const CHATBASE_CONFIG = {
+    agentId: 'y7jTzyHhLeJFzUvlpBqqP',
+    secretKey: '4ub42ku4e9ffy5qmhvdh4zkjj2gbdx14',
+    apiEndpoint: 'https://www.chatbase.co/api/v1/chat'
 };
 
 function getMockResponse(message) {
@@ -486,42 +485,33 @@ function formatBotMessage(content) {
 }
 
 async function getAIResponse(message) {
-    // Check if API key is configured
-    if (!API_CONFIG.apiKey) {
-        return getMockResponse(message);
-    }
-    
     try {
-        const response = await fetch(API_CONFIG.endpoint, {
+        // Use Chatbase API
+        const response = await fetch(CHATBASE_CONFIG.apiEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_CONFIG.apiKey}`,
-                'HTTP-Referer': window.location.origin,
-                'X-Title': 'Med.Ai - Medtools Assistant'
+                'Authorization': `Bearer ${CHATBASE_CONFIG.secretKey}`
             },
             body: JSON.stringify({
-                model: API_CONFIG.model,
-                messages: [
-                    { role: 'system', content: API_CONFIG.systemPrompt },
-                    ...chatMessages.slice(-10), // Keep last 10 messages for context
-                    { role: 'user', content: message }
-                ],
-                temperature: 0.7,
-                max_tokens: 1000
+                agentId: CHATBASE_CONFIG.agentId,
+                message: message,
+                sessionId: `session_${Date.now()}`, // Generate unique session ID
+                stream: false
             })
         });
         
         if (!response.ok) {
-            throw new Error(`API request failed: ${response.status}`);
+            throw new Error(`Chatbase API request failed: ${response.status}`);
         }
         
         const data = await response.json();
-        return data.choices[0].message.content;
+        return data.text || data.message || 'Sorry, I could not process your request.';
         
     } catch (error) {
-        console.error('API Error:', error);
-        throw error;
+        console.error('Chatbase API Error:', error);
+        // Fallback to mock response if Chatbase fails
+        return getMockResponse(message);
     }
 }
 
